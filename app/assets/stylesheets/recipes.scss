@@ -1,0 +1,22 @@
+// Place all the styles related to the recipes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+$my-color: red;
+
+
+.ingredients {
+  color: $my-color;
+}
+
+.directions {
+  color: $my-color;
+}
+
+
+#recipe_list {
+  h2 {
+    color: blue;
+  }
+}
+

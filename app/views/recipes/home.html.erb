@@ -1,0 +1,21 @@
+<h2>Recipes</h2>
+
+
+<div class="jumbotron">
+  <h1>Hello, world!</h1>
+  <p>...</p>
+  <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+</div>
+
+
+
+<div id="recipe_list">
+  <% @recipes.each do |recipe| %>
+
+    <h2>Title: <%= recipe.title %></h2>
+    <h4>Chef: <%= recipe.chef %></h4>
+    <p class="ingredients">Ingredients: <%= recipe.ingredients %></p>
+    <p class="directions">Directions: <%= recipe.directions %> </p>
+
+  <% end %>
+</div>
