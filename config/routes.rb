@@ -3,4 +3,7 @@ Rails.application.routes.draw do
 
   get "/", to: "recipes#home"
 
+  get "/new_recipe", to: "recipes#new"
+  post "/recipe_saved", to: "recipes#save"
+
 end
