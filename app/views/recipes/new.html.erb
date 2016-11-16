@@ -1,4 +1,6 @@
-<%= form_tag "/recipe_saved", method: :post do %>
+<h1>Create new recipe</h1>
+
+<%= form_tag "/recipes", method: :post do %>
   <div>
     <%= label_tag :title, "Recipe Title:" %>
     <%= text_field_tag :title %>
