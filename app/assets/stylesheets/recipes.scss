@@ -4,6 +4,15 @@
 
 $my-color: red;
 
+body {
+  font-family: 'Josefin Sans', sans-serif;
+  background-image: url(fabric_of_squares_gray.png);
+}
+
+.recipe_image {
+  height: 150px;
+  width: 150px;
+}
 
 .ingredients {
   color: $my-color;
