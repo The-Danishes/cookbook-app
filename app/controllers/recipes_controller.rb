@@ -1,7 +1,8 @@
 class RecipesController < ApplicationController
 
   def index
-    @recipes = Recipe.all
+    sort_column = params[:sort]
+    @recipes = Recipe.all.order(sort_column)
   end
 
   def show
@@ -39,8 +40,14 @@ class RecipesController < ApplicationController
     recipe.destroy
 
     flash[:danger] = "Recipe has been deleted!" 
-
     redirect_to "/recipes"
+  end
+
+
+  def search
+    @search_term = params[:search]
+    @recipes = Recipe.where("title LIKE ?", "%#{@search_term}%")
+    render :index
   end
 
 

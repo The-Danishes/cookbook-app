@@ -1,5 +1,16 @@
 <h1>All Recipes</h1>
 
+<%= form_tag "/search", method: :post do %>
+  <%= label_tag :search %>
+  <%= text_field_tag :search %>
+  <%= submit_tag "Search" %>
+<% end %>
+
+
+<%= link_to "Sort by Prep Time", "/recipes?sort=prep_time" %>
+<br>
+<%= link_to "Sort by Title", "/recipes?sort=title" %>
+
 <div id="recipe_list" class="row">
   <% @recipes.each do |recipe| %>
   <div class="col-sm-4">
@@ -8,7 +19,7 @@
       <%= image_tag recipe.image, class: "recipe_image" %>
       <h4>Chef: <%= recipe.chef %></h4>
       <p class="ingredients">Ingredients: <%= recipe.ingredients %></p>
-      <p class="directions">Directions: <%= recipe.directions %> </p>
+      <p class="directions">Prep Time: <%= recipe.prep_time %> </p>
 
       <a class="btn btn-default" href="/recipes/<%= recipe.id %>/edit">Edit</a>
     </div>
