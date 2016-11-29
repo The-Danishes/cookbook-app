@@ -1,19 +1,28 @@
 class RecipesController < ApplicationController
+  before_action :authenticate_user!
 
   def index
     sort_column = params[:sort]
-    @recipes = Recipe.all.order(sort_column)
+    @recipes = current_user.recipes.order(sort_column)
   end
 
   def show
     @recipe = Recipe.find_by(id: params[:id])
+
+    if current_user.id != @recipe.user_id
+      redirect_to "/"
+    end
   end
 
   def new
   end
 
   def create
-    @recipe = Recipe.new(title: params[:title], chef: params[:chef], ingredients: params[:ingredients], directions: params[:directions])
+    @recipe = Recipe.new(title: params[:title],
+                        chef: params[:chef],
+                        ingredients: params[:ingredients],
+                        directions: params[:directions],
+                        user_id: current_user.id)
     @recipe.save
 
     flash[:success] = "Recipe has been created!"
@@ -39,10 +48,9 @@ class RecipesController < ApplicationController
     recipe = Recipe.find_by(id: params[:id])
     recipe.destroy
 
-    flash[:danger] = "Recipe has been deleted!" 
+    flash[:danger] = "Recipe has been deleted!"
     redirect_to "/recipes"
   end
-
 
   def search
     @search_term = params[:search]
